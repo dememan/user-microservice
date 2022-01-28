@@ -1,2 +1,2 @@
-# user-service - psring boot Microservice Impl
+# user-service - Springboot Microservice Impl
 user microservice for Blogging Application
