@@ -3,6 +3,7 @@ package com.edu.miu.eaproject.userservice.controller;
 import com.edu.miu.eaproject.userservice.domain.Comments;
 import com.edu.miu.eaproject.userservice.domain.Post;
 import com.edu.miu.eaproject.userservice.domain.Users;
+import com.edu.miu.eaproject.userservice.dto.UsersRoleDTO;
 import com.edu.miu.eaproject.userservice.proxy.UserServiceProxy;
 import com.edu.miu.eaproject.userservice.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +30,12 @@ public class UserController {
 
     @GetMapping("/{id}")
     public Users getById(@PathVariable Long id) {
-
         return usersService.getById(id);
     }
-
+    @GetMapping(value = "/username/{username}" )
+    public Users getById(@PathVariable String username) {
+        return usersService.getByUserName(username);
+    }
     @PostMapping
     public Users create(@RequestBody Users user) {
 
@@ -66,5 +69,10 @@ public class UserController {
         return userServiceProxy.getPosts(userId);
     }
 
+    @GetMapping("/{id}/roles")
+    public UsersRoleDTO getUserRoles(@PathVariable Long id) {
+
+        return usersService.getUserRoles(id);
+    }
 
 }
