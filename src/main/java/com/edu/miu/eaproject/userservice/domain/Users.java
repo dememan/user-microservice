@@ -18,6 +18,15 @@ public class Users {
     private String userName;
     @JsonIgnore
     private String password;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<Roles> roles = new ArrayList<>();
+
+
     public Long getId() {
         return Id;
     }
@@ -57,6 +66,26 @@ public class Users {
     public void setPassword(String password) {
         this.password = password;
     }
-//    @OneToMany(cascade = CascadeType.ALL)
-//     private List<Roles> roles = new ArrayList<>();
+
+    public List<Roles> getRoles() {
+        return roles;
+    }
+
+    public void addRoles(Roles role) {
+        if (roles == null) roles = new ArrayList<>();
+        if (roles.contains(role)) {
+            System.out.println("role already exists");
+            return;
+        }
+        roles.add(role);
+    }
+
+    public void removeRoles(Roles role) {
+        if (roles == null) return;
+        if (!roles.contains(role)) {
+            System.out.println("role does already exists");
+            return;
+        }
+        roles.add(role);
+    }
 }
