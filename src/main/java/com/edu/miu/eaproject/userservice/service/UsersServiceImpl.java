@@ -1,13 +1,10 @@
 package com.edu.miu.eaproject.userservice.service;
 
-import com.edu.miu.eaproject.userservice.domain.Roles;
 import com.edu.miu.eaproject.userservice.domain.Users;
-import com.edu.miu.eaproject.userservice.dto.UsersRoleDTO;
 import com.edu.miu.eaproject.userservice.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -48,12 +45,6 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public void deleteById(Long userId) {
         usersRepository.deleteById(userId);
-    }
-
-    @Override
-    public UsersRoleDTO getUserRoles(Long userId) {
-        Users user = getById(userId);
-        return new UsersRoleDTO(user.getUserName(), user.getRoles());
     }
 
     @Override
