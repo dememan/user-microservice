@@ -33,6 +33,7 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public Users create(Users user) {
+        user.setId(null);
         return usersRepository.save(user);
     }
 

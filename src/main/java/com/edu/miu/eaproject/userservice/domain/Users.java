@@ -2,8 +2,12 @@ package com.edu.miu.eaproject.userservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +21,7 @@ public class Users {
     private String lastName;
     private String userName;
 
+
     public Users() {
     }
 
@@ -25,6 +30,7 @@ public class Users {
         this.lastName = lastName;
         this.userName = userName;
     }
+
     public Long getId() {
         return Id;
     }
